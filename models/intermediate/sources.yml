@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: ga4_sample
+    database: bigquery-public-data
+    schema: ga4_obfuscated_sample_ecommerce
+    tables:
+      - name: events_*
+        description: "Daily-partitioned GA4 export tables (public sample)."

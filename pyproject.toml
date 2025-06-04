@@ -1,0 +1,29 @@
+[project]
+name = "onboarding-funnel-analysis"
+version = "0.1.0"
+description = "User onboarding funnel and A/B testing analysis using dbt and BigQuery"
+authors = [
+    {name = "Marina Petkovic"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dbt-bigquery (>=1.9.2,<2.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "matplotlib (>=3.10.3,<4.0.0)",
+    "seaborn (>=0.13.2,<0.14.0)",
+    "scipy (>=1.15.3,<2.0.0)",
+    "jupyter (>=1.1.1,<2.0.0)",
+    "google-cloud-bigquery (>=3.34.0,<4.0.0)",
+    "streamlit (>=1.45.1,<2.0.0)",
+    "notebook (>=7.4.3,<8.0.0)",
+    "ipykernel (>=6.29.5,<7.0.0)",
+    "statsmodels (>=0.14.4,<0.15.0)"
+]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
