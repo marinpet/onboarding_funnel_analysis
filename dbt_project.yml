@@ -10,3 +10,45 @@ test-paths: ["tests"]
 macro-paths: ["macros"]
 target-path: "target"          # compiled SQL + artifacts
 clean-targets: ["target", "dbt_packages"]
+
+models:
+  +materialized: view   # default for every model
+  onboarding_funnel_analysis:
+    staging:
+      +materialized: view   # keep it free
+      +tags: ["stage"]
+    intermediate:
+      +materialized: table   
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +partition_by:
+        field: event_date
+        data_type: date
+      +cluster_by: [event_name]
+      +tags: ["mart"]
+
+  vars:
+    start_date: "20250301"  
+    event_date: "20250430"  # only two months for now
+  
+  # Run-start hook
+  models_on_run_start:
+    - "SET @@query-priority = 'batch';"  # make every query "batch" priority for free slots
+
+  # Sanity check - What did this run cost?
+  on-run-end:
+    - >
+      SELECT CONCAT(
+      'Bytes billed this run:',
+      FORMAT('%0.2f', SUM(total_bytes_billed) / 1e9),
+      ' GB, ',
+      ) AS cost_report
+      FROM UNNEST(EXTERNAL_QUERY('region-us',
+        '''
+        SELECT total_bytes_billed
+        FROM `region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
+        WHERE creation_time >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR)
+          AND user_email = SESSION_USER()
+        '''
+      )
