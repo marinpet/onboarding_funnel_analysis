@@ -1,0 +1,34 @@
+version: 2
+
+models: 
+  - name: stg_events
+    description: "Cleaned GA4 events, 1 row per raw hit"
+    columns:
+      - name: event_ts
+        tests:
+          - not_null
+      - name: event_name
+        tests:
+          - accepted_values:
+              values: 
+                - page_view
+                - user_engagement
+                - scroll
+                - view_item
+                - session_start
+                - first_visit
+                - view_promotion
+                - add_to_cart
+                - begin_checkout
+                - select_item
+                - view_search_results
+                - add_shipping_info
+                - add_payment_info
+                - select_promotion
+                - purchase
+                - click
+                - view_item_list
+      - name: ga_session_id
+        description: "Session identifier extracted from event_params"
+        tests:
+          - not_null
