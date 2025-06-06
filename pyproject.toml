@@ -19,7 +19,9 @@ dependencies = [
     "streamlit (>=1.45.1,<2.0.0)",
     "notebook (>=7.4.3,<8.0.0)",
     "ipykernel (>=6.29.5,<7.0.0)",
-    "statsmodels (>=0.14.4,<0.15.0)"
+    "statsmodels (>=0.14.4,<0.15.0)",
+    "google-cloud-bigquery-storage (>=2.32.0,<3.0.0)",
+    "plotly (>=6.1.2,<7.0.0)"
 ]
 package-mode = false
 
