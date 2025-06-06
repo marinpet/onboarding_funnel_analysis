@@ -2,6 +2,7 @@
 
 > End-to-end analytics project that turns raw GA4 event data into a clear story of how visitors move through the funnel, and delivers a trustworthy verdict on an A/B test - built with **dbt**, **Python**, and **Looker Studio/Tableau**.
 
+<!---
 ---
 
 ## 📚 What you’ll learn from this repo
@@ -10,26 +11,29 @@
 - **Experimental design & evaluation**: building variant cohorts and running z-tests in SQL/Python.
 - **Cost-efficient querying** on partitioned GA4 export tables in BigQuery.
 - **Storytelling deliverables**: notebooks, an interactive BI dashboard, and an executive slide deck.
+--->
 
 ---
 
 ## 🗂 Table of Contents
 1. [Project Overview](#project-overview)  
-2. [Quick Start](#quick-start)  
-3. [Repository Structure](#repository-structure)  
-4. [Data Architecture](#data-architecture)  
-5. [How to Run the Analysis](#how-to-run-the-analysis)  
-6. [Dashboards](#dashboards)  
-7. [Results & Insights](#results--insights)  
-8. [Contributing](#contributing)  
-9. [License](#license)  
-10. [Contact](#contact)
+2. [Quick Start](#quick-start)
+
+4. [Repository Structure](#repository-structure)  
+5. [Data Architecture](#data-architecture)  
+6. [How to Run the Analysis](#how-to-run-the-analysis)  
+7. [Dashboards](#dashboards)  
+8. [Results & Insights](#results--insights)  
+<!--- 9. [Contributing](#contributing) 
+10. [License](#license)  
+11. [Contact](#contact)
+--->
 
 ---
 
 ## Project Overview
 A short problem statement—_“How can we improve purchase conversion while validating product changes via controlled experiments?”_. 
-The dataset used: _analytics_onboarding_us_ - Google’s public GA4 demo export for a merchandise store. It contains one year of U.S. web- and app-event data—every page view, add-to-cart, checkout, and purchase—stored as daily-partitioned event tables in BigQuery. Each event includes user, traffic-source, and nested product details.
+The dataset used: ga4_obfuscated_sample_ecommerce - Google’s public GA4 demo export for a merchandise store. It contains three months of traffic, from 2020-11-01 to 2021-01-31.
 
 ---
 
