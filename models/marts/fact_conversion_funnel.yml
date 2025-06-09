@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fact_conversion_funnel
+    description: "The model provides session-level funnel flags and timing metrics."
+
+    tests:
+    # sanity: every session should at least have t_view null-coalesced to FALSE, never NULL
+      - dbt_utils.expression_is_true:
+          expression: "(has_viewed_item IS NOT NULL)"
+
+    columns:
+      - name: user_pseudo_id
+        tests: [not_null]
+      - name: ga_session_id
+        tests: [not_null]
+      - name: has_purchased
+        description: "TRUE if the session recorded a purchase event."
