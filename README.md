@@ -46,9 +46,5 @@ cd onboarding_funnel_analysis
 # 2. Install Python deps
 poetry install
 
-# 3. Set BigQuery credentials (service-account JSON)
-export GOOGLE_APPLICATION_CREDENTIALS=~/path/key.json
+...
 
-# 4. Run dbt models & tests
-poetry run dbt run
-poetry run dbt test
