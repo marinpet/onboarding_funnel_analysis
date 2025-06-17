@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fact_ab_cohort
+    description: "Synthetic 50/50 control-treatment cohorts with KPIs."
+
+    tests:
+      # every user in exactly one bucket
+      - dbt_utils.expression_is_true:
+          expression: "(is_control + is_treatment) = 1"
+
+    columns:
+      - name: user_pseudo_id
+        tests: [not_null]
