@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fact_ab_cohort_cleaned
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "(CAST(is_control AS INT64) + CAST(is_treatment AS INT64)) = 1"
+      - dbt_utils.expression_is_true:
+          expression: "NOT (purchases > 0 AND revenue IS NULL)"
+      - dbt_utils.expression_is_true:
+          expression: "revenue IS NOT NULL"
