@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: funnel_step_counts
+    description: |
+      Pre-aggregated session counts for each step in the funnel
+    columns:
+      - name: step
+      - name: sessions
+        test:
+          - not_null
